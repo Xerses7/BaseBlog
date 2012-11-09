@@ -1,4 +1,5 @@
 <?php
+	require("./Classes/config.php");
 	require_once("./Classes/post.php");
 	require_once("./Classes/posts.php");
 	require_once("./Classes/categories.php");
@@ -9,4 +10,6 @@
 	
 	echo "Completato";
 	echo "prova di errore";
+	
+	include("../View/layout.php");
 ?>
