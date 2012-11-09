@@ -11,5 +11,5 @@
 	echo "Completato";
 	echo "prova di errore";
 	
-	include("../View/layout.php");
+	include("./View/layout.php");
 ?>
