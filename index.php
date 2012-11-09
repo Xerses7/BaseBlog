@@ -8,8 +8,5 @@
 	require_once("./Classes/date.php");
 	require_once("./Classes/user.php");
 	
-	echo "Completato";
-	echo "prova di errore";
-	
 	include("./View/layout.php");
 ?>
