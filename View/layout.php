@@ -8,10 +8,10 @@
 </head>
 
 <body>
-	<h1>La mia home</h1>
+	
 	<?php
 	
-		include("");		
+		include("./View/index.view.php");
 	
 	?>
 	
