@@ -11,7 +11,7 @@
 	
 	<?php
 	
-		include("./View/index.view.php");
+		include($view);
 	
 	?>
 	

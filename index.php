@@ -8,5 +8,8 @@
 	require_once("./Classes/date.php");
 	require_once("./Classes/user.php");
 	
-	include("./View/layout.php");
+	$view = "./View/index.view.php";
+
+
+	include "View/layout.php";
 ?>
