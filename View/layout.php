@@ -11,7 +11,7 @@
 	
 	<?php
 	
-		include($view);
+		include($path);
 	
 	?>
 	

@@ -7,4 +7,6 @@
 <label for="testo">Testo: </label>
 <textarea name="testo" rows="10" cols="30">
 </textarea>
+
+<a href="../index.php">Indietro</a>
 </form>
