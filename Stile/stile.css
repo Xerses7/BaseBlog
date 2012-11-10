@@ -1,7 +1,12 @@
 body {
-	font-family: arial, sans-serif;
+	font-family: verdana, sans-serif;
 	width: 600px;
 	margin: auto;
+}
+
+input[type=text], textarea, label {
+	display: block;
+	width: 500px;
 }
 
 
