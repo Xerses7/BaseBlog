@@ -2,7 +2,7 @@
 
 	class Post {
 		// constructor method
-		public function __construct () {
+		public function __construct ($config) {
 		
 		}
 		
