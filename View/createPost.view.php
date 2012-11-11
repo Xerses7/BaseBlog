@@ -1,6 +1,6 @@
-<h1>Inserisci Post</h1>
+<h1>Nuovo Post</h1>
 
-<form action="./Controllers/createPost.php" method="get">
+<form action="./createPost.php" method="post">
 <label for="titolo">Titolo:</label>
 <input name="titolo" type="text">
 
@@ -8,5 +8,13 @@
 <textarea name="testo" rows="10" cols="30">
 </textarea>
 
-<a href="../index.php">Indietro</a>
+<input type="submit" value="Inserisci">
+
 </form>
+<?php
+	if($data){
+		echo $data['status'];	
+	}
+?>
+
+<br><a href="../index.php">Indietro</a>
