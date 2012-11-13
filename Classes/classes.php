@@ -1,5 +1,5 @@
 <?php
-
+	require_once('database.php');
 	require_once("view.php");
 	require_once("post.php");
 	require_once("posts.php");
