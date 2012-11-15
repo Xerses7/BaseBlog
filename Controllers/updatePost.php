@@ -14,6 +14,8 @@
 		}
 	} else {
 		$post = new Post();
+		//TODO
+		//get post to update from querystring
 		$data = $post->get(1);
 	} 
 	

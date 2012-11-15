@@ -61,10 +61,12 @@
 		
 		public function select ($id, $table, $where, $limit = '', $details = ''){
 			try {
-				//TODO testing !!!!!
+			
 				$stmt = $this->dbconn->prepare("SELECT * FROM $table $where $limit $details");
-				$result = $stmt->execute();
+				$result = $stmt->execute( array(':id' => $id) );
+				$result = $stmt->fetch(PDO::FETCH_ASSOC);
 				return($result);
+				
 			} catch (PDOException $e){
 				echo "Error: " . $e->getMessage();
 			} 
