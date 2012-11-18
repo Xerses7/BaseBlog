@@ -47,9 +47,11 @@
 		//get Post by Id
 		public function get ( $id ) {
 			
-			$data = $this->conn->select($id, "post", " WHERE id_post = :id ", " LIMIT 1");
+			$data = $this->conn->select("post", " WHERE id_post = :id ", "LIMIT 1", $id);
 			return($data);
 		}
+		
+		
 	}
 
 ?>

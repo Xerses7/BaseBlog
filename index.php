@@ -1,6 +1,12 @@
 <?php
-	require("./Classes/config.php");
+	require("./Classes/classes.php");
 	
-	View::get("index");
+	$postsContr = new Posts();
+	
+	$posts = $postsContr->get();
+	
+	View::get("index", array(
+		'posts' => $posts
+	));
 
 ?>

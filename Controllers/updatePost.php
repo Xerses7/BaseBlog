@@ -3,6 +3,7 @@
 	
 	$data = array();
 	
+	// AFTER the Update...
 	if ($_SERVER['REQUEST_METHOD'] === "POST"){
 		echo("Tentativo di inserimento...");
 		if (empty($_POST['titolo']) || empty($_POST['testo'])){
@@ -12,6 +13,7 @@
 			
 			$data['status'] = "Post Inserito";
 		}
+	// BEFORE the Update...
 	} else {
 		$post = new Post();
 		//TODO

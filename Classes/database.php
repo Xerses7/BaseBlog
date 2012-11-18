@@ -59,12 +59,29 @@
 			}
 		}
 		
-		public function select ($id, $table, $where, $limit = '', $details = ''){
+		public function select ($table, $where, $details = '', $limit = '', $id =''){
 			try {
-			
-				$stmt = $this->dbconn->prepare("SELECT * FROM $table $where $limit $details");
-				$result = $stmt->execute( array(':id' => $id) );
-				$result = $stmt->fetch(PDO::FETCH_ASSOC);
+				$query = "SELECT * FROM $table $where $details $limit";
+				// for debug..
+				// print ($query);
+				$stmt = $this->dbconn->prepare($query);
+				
+				$result;
+				
+				// checking if the query is on a single post
+				if ( $id ){
+					$result = $stmt->execute( array(':id' => $id) );
+				} else {
+					$result = $stmt->execute();
+				}
+				
+				// more, choosing if we have to fetch 1 or more rows 
+				if ($limit === "LIMIT 1"){
+					$result = $stmt->fetch(PDO::FETCH_ASSOC);
+				} else {
+					$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				}
+				
 				return($result);
 				
 			} catch (PDOException $e){

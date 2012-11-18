@@ -20,7 +20,8 @@
 			// inserire il post nel DB
 			$dbPost = new Post();
 			$dbPost->create($data);
-			$data['status'] = "Post Inserito";
+			unset($data);
+			header("Location: http://localhost/Blog");
 		}
 	} 
 	
