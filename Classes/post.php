@@ -22,9 +22,10 @@
 		}
 		
 		//update
-		public function update ( $fields, $params, $values ){
+		public function update ($postId, $fields, $params, $values ){
 			print_r($values);
 			$this->conn->update(
+				$postId,
 				"post",
 				$fields,
 				$params,
@@ -47,7 +48,7 @@
 		//get Post by Id
 		public function get ( $id ) {
 			
-			$data = $this->conn->select("post", " WHERE id_post = :id ", "LIMIT 1", $id);
+			$data = $this->conn->select("post", " WHERE id_post = :id ",'', "LIMIT 1", $id);
 			return($data);
 		}
 		

@@ -1,6 +1,9 @@
 <h1>Aggiorna Post</h1>
 
 <form action="./updatePost.php" method="post">
+
+<input name="id_post" type="hidden" value="<?php echo $data['id_post']; ?>">
+
 <label for="titolo">Titolo:</label>
 <input name="titolo" type="text" value="<?php echo $data['titolo']; ?>">
 

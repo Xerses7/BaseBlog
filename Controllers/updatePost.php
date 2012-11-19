@@ -9,16 +9,26 @@
 		if (empty($_POST['titolo']) || empty($_POST['testo'])){
 			$data['status'] = "Riempire entrambi i form per favore !";
 		} else {
+		
 			// get data from server
+			$title = $_POST['titolo'];
+			$text = $_POST['testo'];
+			$id = $_POST['id_post'];
+			$post = new Post();
+			$fields = array('titolo', 'testo');
+			$params = array(':titolo', ':testo');
+			$values = array(':titolo' => $title,':testo' => $text);
+			$post->update($id, $fields, $params, $values);
 			
-			$data['status'] = "Post Inserito";
+			header("Location: http://localhost/Blog");
 		}
 	// BEFORE the Update...
-	} else {
+	} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		$post = new Post();
+		
 		//TODO
 		//get post to update from querystring
-		$data = $post->get(1);
+		$data = $post->get($_GET['id_post']);
 	} 
 	
 	
