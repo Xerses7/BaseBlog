@@ -23,7 +23,6 @@
 		
 		//update
 		public function update ($postId, $fields, $params, $values ){
-			print_r($values);
 			$this->conn->update(
 				$postId,
 				"post",
@@ -36,8 +35,9 @@
 		}
 		
 		//delete
-		public function delete (){
-			
+		public function delete ($postId){
+			$ifDeleted = $this->conn->delete($postId, "post", "id_post");
+			return($ifDeleted);
 		}
 		
 		//show 

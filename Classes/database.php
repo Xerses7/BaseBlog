@@ -40,7 +40,6 @@
 				//then I count the number of $fields
 				$numberOfFields = count($fields);
 				
-				echo ("Numero di elementi nell'array : " . $numberOfFields);
 				//cycle over the $fields and $params
 				for ($x = $numberOfFields; $x > 0 ; $x--){
 					// sum the fields and params data
@@ -60,10 +59,9 @@
 				
 				//adding post_id to values to bind in execution
 				$values[$idParam] = $id;
-				print_r($values);
 				
 				// a little debug..
-				print($query);
+				// print($query);
 
 				$stmt = $this->dbconn->prepare($query);
 				$result = $stmt->execute($values);
@@ -102,6 +100,21 @@
 			} catch ( PDOException $e ){
 				echo "Error: " . $e->getMessage();
 			} 
+		}
+		
+		public function delete($id, $table, $field){
+			try {
+				$query = "DELETE FROM $table WHERE $field = :id";
+				
+				$stmt = $this->dbconn->prepare($query);
+				
+				$result = $stmt->execute( array(':id' => $id));
+				
+				return($result);
+				
+			} catch(PDOException $e){
+				echo "Error: " . $e->getMessage();
+			}
 		}
 	}
 
