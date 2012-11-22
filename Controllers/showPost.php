@@ -6,6 +6,9 @@
 		$idPost = $_GET['id_post'];
 		$postContr = new Post();
 		$data = $postContr->get($idPost);
+		
+		//insert newlines and carriage returns in text
+		$data['testo'] = nl2br($data['testo']);
 	} else {
 		header("Location: http://localhost/Blog");
 	}
