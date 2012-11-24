@@ -9,6 +9,9 @@
 		
 		//insert newlines and carriage returns in text
 		$data['testo'] = nl2br($data['testo']);
+		
+		//get date and hour to the right php timestamp
+		$data['data_ora'] = Date::mySQLToPHP( $data['data_ora'] );
 	} else {
 		header("Location: http://localhost/Blog");
 	}
