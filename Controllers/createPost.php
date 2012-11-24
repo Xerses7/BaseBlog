@@ -12,8 +12,8 @@
 			$data[':id_post'] = " ";
 			$data[':titolo'] = $_POST['titolo'];
 			$data[':testo'] = $_POST['testo'];
-			//TODO
-			$data[':data_ora'] = "12";
+			 
+			$data[':data_ora'] = Date::phpToMySQL( time() );
 			$data[':categoria_id'] = "1";
 			//$utente[':utente_id']
 			
