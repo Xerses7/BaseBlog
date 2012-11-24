@@ -12,6 +12,11 @@
 		
 		//get date and hour to the right php timestamp
 		$data['data_ora'] = Date::mySQLToPHP( $data['data_ora'] );
+		
+		//get all comments on the post
+		$commentsContr = new Comments();
+		$comments = $commentsContr->get($idPost);
+		$data['comments'] = $comments;
 	} else {
 		header("Location: http://localhost/Blog");
 	}
