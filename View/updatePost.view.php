@@ -2,15 +2,15 @@
 
 <form action="./updatePost.php" method="post">
 
-<input name="id_post" type="hidden" value="<?php echo $data['id_post']; ?>">
+<input name="id_post" type="hidden" value="<?php echo $post['id_post']; ?>">
 
 <label for="titolo">Titolo:</label>
-<input name="titolo" type="text" value="<?php echo $data['titolo']; ?>">
+<input name="titolo" type="text" value="<?php echo $post['titolo']; ?>">
 
 <label for="testo">Testo: </label>
 <textarea name="testo" rows="10" cols="30">
 <?php 
-echo $data['testo'];
+echo $post['testo'];
 ?>
 </textarea>
 
