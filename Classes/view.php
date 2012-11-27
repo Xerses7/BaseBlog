@@ -7,9 +7,13 @@
 			}
 			if ($path == "index"){
 				$path = $path . ".view.php";
+				$style = "./Stile/stile.css";
+				$categoryContr = "./Controllers/postsByCategory.php";
 				include("./View/layout.php");
 			} else {
 				$path = $path . ".view.php";
+				$style = "../Stile/stile.css";
+				$categoryContr = "../Controllers/postsByCategory.php";
 				include("../View/layout.php");
 			}
 		}
