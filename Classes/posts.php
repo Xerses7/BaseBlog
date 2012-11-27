@@ -17,13 +17,21 @@
 				"ORDER BY id_post DESC",
 				"LIMIT 10"
 			);
-			print_r($posts);
 			return($posts);
 		}
 		
 		// an interval of posts
-		public function getInterval () {
-			
+		public function getByCategory ($categoryId) {
+			//fetch posts from db
+			$posts = $this->db->select
+			(
+				"post",
+				"WHERE id_categoria = :id",
+				"ORDER BY id_post DESC",
+				"LIMIT 10",
+				$categoryId
+			);
+			return($posts);
 		}
 	}
 
