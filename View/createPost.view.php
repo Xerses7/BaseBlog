@@ -12,8 +12,8 @@
 
 </form>
 <?php
-	if($data){
-		echo $data['status'];	
+	if(isset($status)){
+		echo $status;	
 	}
 ?>
 
