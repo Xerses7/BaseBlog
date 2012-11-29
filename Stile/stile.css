@@ -1,6 +1,6 @@
 body {
 	font-family: verdana, sans-serif;
-	background: #d9d300;
+	background: #DDD;
 }
 
 div.wrapper {
@@ -35,7 +35,7 @@ div.header h1 a {
 div.categories {
 	margin: 0;
 	display:block;
-	background: #d99000;
+	background: #585858;
 }
 
 div.categories ul {
@@ -48,7 +48,8 @@ div.categories ul {
 
 div.categories ul li a {
 	text-decoration: none;
-	color: white;
+	color: #BABABA;
+	text-shadow: 0 -1px 0 white;
 }
 
 select.categories {
