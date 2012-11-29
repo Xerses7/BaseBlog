@@ -22,7 +22,9 @@
 		//get all categories
 		$categoriesContr = new Categories();
 		$categories = $categoriesContr->get();
+		$categoryName = $categoriesContr->getNameById($id_categoria);
 		
+		$data['nome_categoria'] = $categoryName;
 		$data['categories'] = $categories;
 		
 	} else {
