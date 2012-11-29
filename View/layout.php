@@ -9,22 +9,26 @@
 </head>
 
 <body>
-<div class="header">
-<h1>Dario Pirola</h1>
-	<div class="categories">
-		<ul>
-			<?php foreach($categories as $category) : ?>
-				<li><?php echo($category['nome_categoria']); ?></li>
-			<?php endforeach; ?>
-		</ul>
+<div class="wrapper">
+	<div class="header">
+	<h1>Dario Pirola</h1>
+		<div class="categories">
+			<ul>
+				<?php foreach($categories as $category) : ?>
+					<li><a href="<?php echo($categoryContr); ?>?id_categoria=<?php echo($category['id_categoria']); ?>"><?php echo($category['nome_categoria']); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 	</div>
-</div>
-<div class="content">
-	<?php
+	<div class="content">
+		<?php
 	
-		include($path);
+			include($path);
 	
-	?>
+		?>
+	</div>
+	<div class="sidebar">
+	</div>
 </div>
 </body>
 </html>

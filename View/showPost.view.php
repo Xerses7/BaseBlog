@@ -1,7 +1,10 @@
 <article>
 <h1 class="title"><?php echo $titolo; ?></h1>
 <p><?php echo $testo; ?></p>
-<a href="../Controllers/updatePost.php?id_post=<?php echo $id_post; ?>">Aggiorna</a>
+<a class="admin" href="../Controllers/updatePost.php?id_post=<?php echo $id_post; ?>">Aggiorna</a>
+<ul class="button">
+	<li><a href="../index.php">Indietro</a></li>
+</ul>
 
 <div class="Comments">
 <h3>Commenti</h3>

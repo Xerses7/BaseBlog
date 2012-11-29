@@ -4,6 +4,13 @@
 <label for="titolo">Titolo:</label>
 <input name="titolo" type="text">
 
+<label for="categories">Categoria: </label>
+<select class="categories" name="categories">
+	<?php foreach($categories as $category) : ?>
+		<option value="<?php echo($category['id_categoria']); ?>"><?php echo($category['nome_categoria']); ?></option>
+	<?php endforeach; ?>
+</select>
+
 <label for="testo">Testo: </label>
 <textarea name="testo" rows="10" cols="30">
 </textarea>
@@ -17,4 +24,6 @@
 	}
 ?>
 
-<br><a href="../index.php">Indietro</a>
+<ul class="button">
+	<li><a  href="../index.php">Indietro</a></li>
+</ul>
