@@ -26,7 +26,7 @@
 			$posts = $this->db->select
 			(
 				"post",
-				"WHERE id_categoria = :id",
+				"WHERE categoria_id = :id",
 				"ORDER BY id_post DESC",
 				"LIMIT 10",
 				$categoryId

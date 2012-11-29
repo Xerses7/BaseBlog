@@ -23,9 +23,12 @@
 			unset($data);
 			header("Location: http://localhost/Blog");
 		}
-	} 
-	
-	
+	} else {
+		//get all categories
+		$categoriesContr = new Categories();
+		$categories = $categoriesContr->get();
+		$data['categories'] = $categories;
+	}
 	
 	View::get("createPost", $data);
 	

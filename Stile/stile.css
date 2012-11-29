@@ -1,15 +1,21 @@
 body {
 	font-family: verdana, sans-serif;
-	margin: 0
+	background: #d9d300;
+}
+
+div.wrapper {
+	width: 95%;
+	margin: auto;
+	margin-top: 30px;
+	background: white;
 }
 
 div.header {
 	
-
 }
 
 div.header h1 {
-	color: black;
+	color: #04266D;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	margin-left: 20%;
@@ -24,7 +30,7 @@ div.header h1 {
 div.categories {
 	margin: 0;
 	display:block;
-	background: #A60C00;
+	background: #d99000;
 }
 
 div.categories ul {
@@ -33,6 +39,28 @@ div.categories ul {
 	padding-top: 10px;
 	padding-left:0;
 	padding-bottom: 10px;
+}
+
+div.categories ul li a {
+	text-decoration: none;
+	color: white;
+}
+
+select.categories {
+	display:block;
+	font-size: 1.3em;
+}
+
+h2.category {
+	color: #04266D;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	padding-top: 20px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font-size: 2.5em;
+	text-shadow: 0 1px 2px #A668D5;
+	font-family: 'Montserrat', sans-serif;
 }
 
 div.header ul li {
@@ -92,21 +120,21 @@ ul.newPost li a {
 	font-weight: bold;
 }
 
-ul.admin {
+ul.admin, ul.button {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	
 	padding-left: 0px;
 }
 
-ul.admin li {
+ul.admin li, ul.button li {
 	display: inline;
 	font-family: 'Montserrat', sans-serif;
 	box-shadow:  0 1px 2px #A668D5;
 	padding: 5px;
 }
-
-ul.admin li a {
+ 
+ul.admin li a, ul.button li a {
 	color: #8377EE;
 	text-decoration:none;
 	padding: 0px;
@@ -118,7 +146,7 @@ div.text code {
 	display: block;
 	border: dashed 1px #0A034C;
 	padding: 10px;
-	background: #8377EE;
+	background: #A9A2E3;
 	color: #2D1EAD;
 }
 

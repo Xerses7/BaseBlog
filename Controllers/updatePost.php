@@ -14,10 +14,12 @@
 			$title = $_POST['titolo'];
 			$text = $_POST['testo'];
 			$id = $_POST['id_post'];
+			$idCategory = $_POST['categories'];
+			
 			$post = new Post();
-			$fields = array('titolo', 'testo');
-			$params = array(':titolo', ':testo');
-			$values = array(':titolo' => $title,':testo' => $text);
+			$fields = array('titolo', 'testo', 'categoria_id');
+			$params = array(':titolo', ':testo', ':categoria_id');
+			$values = array(':titolo' => $title,':testo' => $text, ':categoria_id' => $idCategory);
 			$post->update($id, $fields, $params, $values);
 			
 			header("Location: http://localhost/Blog");
@@ -26,9 +28,13 @@
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		$post = new Post();
 		
-		//TODO
+		//get all categories
+		$categoriesContr = new Categories();
+		$categories = $categoriesContr->get();
+		$data['categories'] = $categories;
+		
 		//get post to update from querystring
-		$data = $post->get($_GET['id_post']);
+		$data['post'] = $post->get($_GET['id_post']);
 	} 
 	
 	

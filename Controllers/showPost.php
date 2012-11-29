@@ -17,6 +17,12 @@
 		$commentsContr = new Comments();
 		$comments = $commentsContr->get($idPost);
 		$data['comments'] = $comments;
+		
+		//get all categories
+		$categoriesContr = new Categories();
+		$categories = $categoriesContr->get();
+		$data['categories'] = $categories;
+		
 	} else {
 		header("Location: http://localhost/Blog");
 	}

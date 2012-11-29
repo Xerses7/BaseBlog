@@ -21,7 +21,8 @@
 		}
 		
 		public function getNameById ($categoryId){
-			$category = $this->conn->select("categorie", "id_categoria = :id", " ORDER BY nome_categoria", "", $categoryId);
+			$category = $this->conn->select("categorie", "WHERE id_categoria = :id", "", "", $categoryId);
+			$category = $category[0];
 			return($category['nome_categoria']);
 		}
 		

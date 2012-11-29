@@ -18,7 +18,7 @@
 			try {
 				//echo("INSERT INTO $table($fields) VALUES($params)");
 				$stmt = $this->dbconn->prepare("INSERT INTO $table($fields) VALUES($params)");
-				print_r($values);
+				
 				$result = $stmt->execute($values);
 			} catch (PDOException $e){
 				echo "Error: " . $e->getMessage();
