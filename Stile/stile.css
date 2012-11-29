@@ -35,7 +35,8 @@ div.header h1 a {
 div.categories {
 	margin: 0;
 	display:block;
-	background: #585858;
+	/**background: #585858;*/
+	
 }
 
 div.categories ul {
@@ -44,12 +45,15 @@ div.categories ul {
 	padding-top: 10px;
 	padding-left:0;
 	padding-bottom: 10px;
+	border-bottom: solid 3px #BABABA;
+	width: 70%;
 }
 
 div.categories ul li a {
 	text-decoration: none;
 	color: #BABABA;
 	text-shadow: 0 -1px 0 white;
+	
 }
 
 select.categories {
