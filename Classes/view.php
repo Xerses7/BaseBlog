@@ -9,11 +9,13 @@
 				$path = $path . ".view.php";
 				$style = "./Stile/stile.css";
 				$categoryContr = "./Controllers/postsByCategory.php";
+				$home = "./index.php";
 				include("./View/layout.php");
 			} else {
 				$path = $path . ".view.php";
 				$style = "../Stile/stile.css";
 				$categoryContr = "../Controllers/postsByCategory.php";
+				$home = "../index.php";
 				include("../View/layout.php");
 			}
 		}

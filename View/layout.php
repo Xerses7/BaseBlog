@@ -11,7 +11,7 @@
 <body>
 <div class="wrapper">
 	<div class="header">
-	<h1>Dario Pirola</h1>
+	<h1><a href="<?php echo($home); ?>">Dario Pirola</a></h1>
 		<div class="categories">
 			<ul>
 				<?php foreach($categories as $category) : ?>
