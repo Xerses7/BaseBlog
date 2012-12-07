@@ -21,8 +21,8 @@
 			// inserire il post nel DB
 			$dbPost = new Post();
 			$dbPost->create($data, $tags);
-			//unset($data);
-			//header("Location: http://localhost/Blog");
+			unset($data);
+			header("Location: http://localhost/Blog");
 		}
 	} else {
 		//get all categories

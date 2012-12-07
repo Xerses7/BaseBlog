@@ -19,14 +19,15 @@
 			print_r($this->tagsTable);
 		}
 		
-		//create
+		//adds tags to post...
 		public function addToPost ($tagString, $idPost = null) {
 			
 			echo("Add to post: $idPost");
 			
 			$tagsInserted = array();
 			
-			// tag list inserted as a form string
+			// tag list, inserted as a form string, changed to array
+			// tags have to be separated with comma+space => ", "
 			$tagsInserted = explode(", ", $tagString);
 			
 			if (!isset($idPost)){
@@ -39,16 +40,23 @@
 			foreach($tagsInserted as $tag){
 				// check if the tag is in the db
 				if ($this->exists($tag)){
-					// TODO
-					// if in db check if post link already exists
+				
+					// if in db get the tag id and change it to integer...
+					$idTag = (int)array_search($tag, $this->tagsTable);
+					
+					// ... check if post link already exists...
+					if(!isset($linkTags[$idTag])){
+						// and if not, add the link
+						$this->linkPost($idPost, $idTag);
+					}
+					
 				} else {
-					// if NOT in db add tag to tags table...
+					// if the tag is NOT in db add tag to tags table...
 					$idTag = $this->add($tag);
 					//... and create tag-post link
 					$this->linkPost($idPost, $idTag);
 				}
 				
-				// return true
 			}
 
 		}
