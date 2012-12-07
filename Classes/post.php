@@ -10,14 +10,26 @@
 		}
 		
 		//new Post
-		public function create ($values){
+		public function create ($values, $tags = null ){
 			print_r($values);
-			$this->conn->insert(
+			//first insert tags
+			
+			
+			$postId = $this->conn->insert(
 				"post",
 				"id_post, titolo, data_ora, testo, categoria_id",
 				":id_post, :titolo, :data_ora, :testo, :categoria_id",
 				$values
 			);
+			
+			
+			echo("Post id: $postId ");
+			
+			if (isset($tags)){
+				$tagString = $tags;
+				$tagsContr = new Tags();
+				$tagsContr->addToPost($tagString, $postId);
+			}	
 		}
 		
 		//update

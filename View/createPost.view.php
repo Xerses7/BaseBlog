@@ -4,6 +4,9 @@
 <label for="titolo">Titolo:</label>
 <input name="titolo" type="text">
 
+<label for="tags">Tag: </label>
+<input name="tags" id="tags" type="text">
+
 <label for="categories">Categoria: </label>
 <select class="categories" name="categories">
 	<?php foreach($categories as $category) : ?>

@@ -1,18 +1,62 @@
 <?php
 
 	class Tags {
+	
+		//db connection
+		protected $conn = '';
+		private $tagsTable = '';
+		private $postTagsLinks = '';
+		
 		public function __construct () {
-			
+			$this->conn = new Database();
+			$tags = $this->conn->select('tag','');
+
+			$tt = array();
+			foreach($tags as $tag){	
+				$tt[$tag['id_tag']] = $tag['nome_tag'];
+			}
+			$this->tagsTable = $tt;
+			print_r($this->tagsTable);
 		}
 		
 		//create
-		public function create () {
-		
+		public function addToPost ($tagString, $idPost = null) {
+			
+			echo("Add to post: $idPost");
+			
+			$tagsInserted = array();
+			
+			// tag list inserted as a form string
+			$tagsInserted = explode(", ", $tagString);
+			
+			if (!isset($idPost)){
+				$idPost = "";
+			}
+			$linkTags = $this->conn->select('posts_tags LEFT JOIN (tag) ON (posts_tags.tag_id)', 'WHERE posts_tags.post_id = :id', '','', $idPost, 'tag.*');
+			print_r($linkTags);
+			
+			// for each element of the array 
+			foreach($tagsInserted as $tag){
+				// check if the tag is in the db
+				if ($this->exists($tag)){
+					// TODO
+					// if in db check if post link already exists
+				} else {
+					// if NOT in db add tag to tags table...
+					$idTag = $this->add($tag);
+					//... and create tag-post link
+					$this->linkPost($idPost, $idTag);
+				}
+				
+				// return true
+			}
+
 		}
 		
 		//read
 		public function read () {
-		
+			$linkTags = $this->conn->select('posts_tags LEFT JOIN (tag) ON (posts_tags.tag_id)', 'WHERE posts_tags.post_id = :id', '','', $idPost, 'tag.*');
+			print_r($linkTags);
 		}
 		
 		//update
@@ -23,6 +67,60 @@
 		//delete
 		public function delete () {
 		
+		}
+		
+		// get all tags present in tags table
+		private function getTags(){
+			$tags = $this->conn->select('tag','');
+			return($tags);
+		}
+		
+		// add tag to tag table
+		private function add ($value) {
+			$id = $this->conn->insert(
+								'tag',
+								'id_tag, nome_tag',
+								':id_tag, :nome_tag',
+								array(':id_tag' => null, ':nome_tag' => $value)
+								);
+	
+			// return the last inserted tag id
+			return($id);
+		}
+		
+		// add tag link to post table 
+		private function linkPost ($idPost, $idTag){
+			$this->conn->insert(
+									'posts_tags',
+									'id_posttag, tag_id, post_id',
+									':id_posttag, :tag_id, :post_id',
+									array(':id_posttag' => null,':tag_id' => $idTag, ':post_id' => $idPost)
+			);
+			return(true);
+		}
+		
+		private function exists ($value) {
+			if (isset($this->tagsTable)){
+				if (in_array($value, $this->tagsTable)){
+					return(true);
+				} else {
+					return(false);
+				}
+			} else {
+				return(false);
+			}
+		}
+		
+		private function isLinkedToPost ($tag, $post){
+			// check if the link table exists
+			if(isset($this->postTagsLinks)){
+				// get the tag ID
+				$tagId = array_search($tag, $this->tagsTable);
+				// check 
+				if (in_ar){
+				
+				}
+			}
 		}
 	}
 

@@ -17,11 +17,12 @@
 			$data[':categoria_id'] = "1";
 			//$utente[':utente_id']
 			
+			$tags = $_POST['tags'];
 			// inserire il post nel DB
 			$dbPost = new Post();
-			$dbPost->create($data);
-			unset($data);
-			header("Location: http://localhost/Blog");
+			$dbPost->create($data, $tags);
+			//unset($data);
+			//header("Location: http://localhost/Blog");
 		}
 	} else {
 		//get all categories
