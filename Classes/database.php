@@ -20,8 +20,14 @@
 				$stmt = $this->dbconn->prepare("INSERT INTO $table($fields) VALUES($params)");
 				
 				$result = $stmt->execute($values);
+				
+				// get the Id of the last inserted row...
+				$idInserted = $this->dbconn->lastInsertId();
+				// and return it ! 
+				return($idInserted);
+				
 			} catch (PDOException $e){
-				echo "Error: " . $e->getMessage();
+				echo "Error: insert " . $e->getMessage();
 			} 
 		}
 		
@@ -68,13 +74,20 @@
 				return($result);
 				
 			} catch (PDOException $e) {
-				echo "Error: " . $e->getMessage();
+				echo "Error: update " . $e->getMessage();
 			}
 		}
 		
-		public function select ($table, $where, $details = '', $limit = '', $id =''){
+		public function select ($table, $where, $details = '', $limit = '', $id = '', $select = null){
 			try {
-				$query = "SELECT * FROM $table $where $details $limit";
+				$query = '';
+				if (isset($select)){
+					$query = "SELECT $select FROM $table $where $details $limit";
+				} else {
+					$query = "SELECT * FROM $table $where $details $limit";
+				}
+				echo($query);
+				
 				// for debug..
 				//print ($query);
 				$stmt = $this->dbconn->prepare( $query );
@@ -98,7 +111,7 @@
 				return( $result );
 				
 			} catch ( PDOException $e ){
-				echo "Error: " . $e->getMessage();
+				echo "Error: select " . $e->getMessage();
 			} 
 		}
 		
@@ -113,7 +126,21 @@
 				return($result);
 				
 			} catch(PDOException $e){
-				echo "Error: " . $e->getMessage();
+				echo "Error: delete " . $e->getMessage();
+			}
+		}
+		
+		public function getLastId (){
+			try {
+				$query = "SELECT LAST_INSERT_ID()";
+				
+				$stmt = $this->dbconn->prepare($query);
+				
+				$result = $stmt->execute();
+				
+				return($result);
+			} catch(PDOException $e){
+				echo "Error: getlastid " . $e->getMessage();
 			}
 		}
 	}
