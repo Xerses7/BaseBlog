@@ -16,13 +16,10 @@
 				$tt[$tag['id_tag']] = $tag['nome_tag'];
 			}
 			$this->tagsTable = $tt;
-			print_r($this->tagsTable);
 		}
 		
 		//adds tags to post...
 		public function addToPost ($tagString, $idPost = null) {
-			
-			echo("Add to post: $idPost");
 			
 			$tagsInserted = array();
 			
@@ -33,9 +30,13 @@
 			if (!isset($idPost)){
 				$idPost = "";
 			}
-			$linkTags = $this->conn->select('posts_tags LEFT JOIN (tag) ON (posts_tags.tag_id)', 'WHERE posts_tags.post_id = :id', '','', $idPost, 'tag.*');
-			print_r($linkTags);
-			
+			$linkTags = $this->conn->select('posts_tags INNER JOIN (tag) ON (posts_tags.tag_id)', 
+													'WHERE tag.id_tag = posts_tags.tag_id AND posts_tags.post_id = :id', 
+													'',		//details
+													'', 		//limit
+													$idPost, //:id
+													'tag.*'); //SELECT
+													
 			// for each element of the array 
 			foreach($tagsInserted as $tag){
 				// check if the tag is in the db
@@ -62,9 +63,20 @@
 		}
 		
 		//read
-		public function read () {
-			$linkTags = $this->conn->select('posts_tags LEFT JOIN (tag) ON (posts_tags.tag_id)', 'WHERE posts_tags.post_id = :id', '','', $idPost, 'tag.*');
-			print_r($linkTags);
+		public function get ($idPost) {
+			$postTags = array();
+			$linkTags = $this->conn->select('posts_tags INNER JOIN (tag) ON (posts_tags.tag_id)', 
+													'WHERE tag.id_tag = posts_tags.tag_id AND posts_tags.post_id = :id', 
+													'',		//details
+													'', 		//limit
+													$idPost, //:id
+													'tag.*'); //SELECT
+			
+			foreach($linkTags as $tag){
+				$postTags[] = $tag['nome_tag'];
+			}
+			return($postTags);
+			// TODO inserting the tag ID to link to a tag only page in the view
 		}
 		
 		//update
