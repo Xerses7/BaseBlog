@@ -5,7 +5,6 @@
 		//db connection
 		protected $conn = '';
 		private $tagsTable = '';
-		private $postTagsLinks = '';
 		
 		public function __construct () {
 			$this->conn = new Database();
@@ -20,7 +19,6 @@
 		
 		//adds tags to post...
 		public function addToPost ($tagString, $idPost = null) {
-			
 			$tagsInserted = array();
 			
 			// tag list, inserted as a form string, changed to array
@@ -30,23 +28,21 @@
 			if (!isset($idPost)){
 				$idPost = "";
 			}
-			$linkTags = $this->conn->select('posts_tags INNER JOIN (tag) ON (posts_tags.tag_id)', 
-													'WHERE tag.id_tag = posts_tags.tag_id AND posts_tags.post_id = :id', 
-													'',		//details
-													'', 		//limit
-													$idPost, //:id
-													'tag.*'); //SELECT
+			
+			$postTags = $this->getPostTags($idPost);
+			
+			print_r($postTags);
 													
 			// for each element of the array 
 			foreach($tagsInserted as $tag){
 				// check if the tag is in the db
 				if ($this->exists($tag)){
-				
+					
 					// if in db get the tag id and change it to integer...
 					$idTag = (int)array_search($tag, $this->tagsTable);
-					
+					echo("Il tag con id $idTag esiste già. ");
 					// ... check if post link already exists...
-					if(!isset($linkTags[$idTag])){
+					if(!isset($postTags[$idTag])){
 						// and if not, add the link
 						$this->linkPost($idPost, $idTag);
 					}
@@ -64,19 +60,29 @@
 		
 		//read
 		public function get ($idPost) {
-			$postTags = array();
-			$linkTags = $this->conn->select('posts_tags INNER JOIN (tag) ON (posts_tags.tag_id)', 
-													'WHERE tag.id_tag = posts_tags.tag_id AND posts_tags.post_id = :id', 
-													'',		//details
-													'', 		//limit
-													$idPost, //:id
-													'tag.*'); //SELECT
+			$postTags = $this->getPostTags($idPost);
 			
-			foreach($linkTags as $tag){
-				$postTags[] = $tag['nome_tag'];
-			}
 			return($postTags);
 			// TODO inserting the tag ID to link to a tag only page in the view
+		}
+		
+		public function getTagString($idPost){
+			$stringTags = '';
+			$elemNum = 0;
+			
+			$postTags = $this->getPostTags($idPost);
+			
+			foreach($postTags as $tag){
+				$elemNum++;
+				if($elemNum === count($postTags)){
+					$stringTags = $stringTags.$tag;
+				} else {
+					$stringTags = $stringTags.$tag.", ";
+				}
+				
+			}
+			
+			return($stringTags);
 		}
 		
 		//update
@@ -131,16 +137,19 @@
 			}
 		}
 		
-		private function isLinkedToPost ($tag, $post){
-			// check if the link table exists
-			if(isset($this->postTagsLinks)){
-				// get the tag ID
-				$tagId = array_search($tag, $this->tagsTable);
-				// check 
-				if (in_ar){
-				
-				}
+		private function getPostTags($idPost){
+			$postTags = array();
+			$tags = $this->conn->select('posts_tags INNER JOIN (tag) ON (posts_tags.tag_id)', 
+													'WHERE tag.id_tag = posts_tags.tag_id AND posts_tags.post_id = :id', 
+													'',
+													'',
+													$idPost,
+													'tag.*');
+			foreach($tags as $tag){
+				$postTags[(int)$tag['id_tag']] = $tag['nome_tag'];
 			}
+			
+			return ($postTags);
 		}
 	}
 

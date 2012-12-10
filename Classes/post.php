@@ -33,7 +33,7 @@
 		}
 		
 		//update
-		public function update ($postId, $fields, $params, $values ){
+		public function update ($postId, $fields, $params, $values, $tagString = null ){
 			$this->conn->update(
 				$postId,
 				"post",
@@ -43,6 +43,14 @@
 				":id_post",
 				"id_post"
 			);
+			
+			
+			
+			if(isset($tagString)){
+				
+				$tagsContr = new Tags();
+				$tagsContr->addToPost($tagString, $postId);
+			}
 		}
 		
 		//delete
