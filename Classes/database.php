@@ -51,11 +51,11 @@
 					// sum the fields and params data
 					if ($x === 1){
 						$y = $x-1;
-						echo($y);
+						//echo($y);
 						$query .= "$fields[$y] = $params[$y]";
 					} else {
 						$y = $x-1;
-						echo($y);
+						//echo($y);
 						$query .= "$fields[$y] = $params[$y],";
 					}	
 				}
@@ -78,7 +78,7 @@
 			}
 		}
 		
-		public function select ($table, $where, $details = '', $limit = '', $id = '', $select = null){
+		public function select ($table, $where, $details = '', $limit = '', $ids = '', $select = null){
 			try {
 				$query = '';
 				if (isset($select)){
@@ -86,7 +86,7 @@
 				} else {
 					$query = "SELECT * FROM $table $where $details $limit";
 				}
-				echo($query);
+				//echo($query);
 				
 				// for debug..
 				//print ($query);
@@ -94,9 +94,12 @@
 				
 				$result;
 				
-				// checking if the query is on a single post
-				if ( $id ) {
-					$result = $stmt->execute( array( ':id' => $id ) );
+				// checking if the query is on a single element or on multiple elements
+				if (count($ids) > 1){
+					$result = $stmt->execute($ids);
+				}
+				else if ( $ids ) {
+					$result = $stmt->execute( array( ':id' => $ids ) );
 				} else {
 					$result = $stmt->execute();
 				}
