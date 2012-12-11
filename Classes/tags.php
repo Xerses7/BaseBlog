@@ -29,33 +29,49 @@
 				$idPost = "";
 			}
 			
+			$tagsToDelete = array();
+			
 			$postTags = $this->getPostTags($idPost);
 			
-			print_r($postTags);
-													
+			// DELETING TAGS REMOVED FROM FORM
+			// for each tag linked to the post 
+			foreach($postTags as $key => $oldTag){
+				// check if the tag wasn't reinserted
+				if(!in_array( $oldTag, $tagsInserted )){
+					// if not, add it to the tags to delete from post
+					$tagsToDelete[$key] = $oldTag;
+				}
+			}
+			// let's delete the removed tags
+			foreach($tagsToDelete as $key => $tag){
+				$this->delete($key, $idPost);
+			}
+			
+			// INSERTING NEW TAGS								
 			// for each element of the array 
 			foreach($tagsInserted as $tag){
+				
 				// check if the tag is in the db
 				if ($this->exists($tag)){
-					
-					// if in db get the tag id and change it to integer...
+					// get the tag id and change it to integer...
 					$idTag = (int)array_search($tag, $this->tagsTable);
-					echo("Il tag con id $idTag esiste già. ");
+						
+					//echo("Il tag con id $idTag esiste già. ");
 					// ... check if post link already exists...
 					if(!isset($postTags[$idTag])){
 						// and if not, add the link
 						$this->linkPost($idPost, $idTag);
 					}
-					
+				
 				} else {
 					// if the tag is NOT in db add tag to tags table...
 					$idTag = $this->add($tag);
 					//... and create tag-post link
 					$this->linkPost($idPost, $idTag);
 				}
-				
 			}
-
+			
+			
 		}
 		
 		//read
@@ -91,8 +107,15 @@
 		}
 		
 		//delete
-		public function delete () {
-		
+		public function delete ($idTag, $idPost) {
+			$toDelete = $this->conn->select('posts_tags', 
+										"WHERE tag_id = :tag_id AND post_id = :post_id",
+										"",
+										"",
+										array(":tag_id" => $idTag, ":post_id" => $idPost));
+			$tag = current($toDelete);
+			
+			$this->conn->delete($tag['id_posttag'],'posts_tags', 'id_posttag');
 		}
 		
 		// get all tags present in tags table
