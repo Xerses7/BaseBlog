@@ -6,6 +6,7 @@
 	if (isset($_GET['id_categoria'])){
 		$id_categoria = $_GET['id_categoria'];
 		$postsContr = new Posts();
+		$tagsContr = new Tags();
 		$oldPosts = $postsContr->getByCategory($id_categoria);
 		
 		$posts = array();
@@ -14,6 +15,8 @@
 			//converting date format from MySQL datetime to PHP timestamp
 			$post['data_ora'] = Date::mySQLToPHP( $post['data_ora'] );
 			$post['testo'] = nl2br( $post['testo'] );
+			$post['tags'] = $tagsContr->get((int)$post['id_post']);
+			
 			$posts[] = $post;
 		}
 		
