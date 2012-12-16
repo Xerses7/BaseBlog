@@ -1,5 +1,6 @@
 <article>
 <h1 class="title"><?php echo $titolo; ?></h1>
+<div class="datetime"><?php echo($data_ora); ?></div>
 <p><?php echo $testo; ?></p>
 <a class="admin" href="../Controllers/updatePost.php?id_post=<?php echo $id_post; ?>">Aggiorna</a>
 <ul class="button">

@@ -3,6 +3,7 @@
 
 <?php foreach ($posts as $post) : ?>
 	<h2 class="title"><a href="../Controllers/showPost.php?id_post=<?php echo $post['id_post']; ?>"><?php echo $post['titolo']; ?></a></h2>
+	<div class="datetime"><?php echo($post['data_ora']); ?></div>
 	<ul class="tags">
 		<?php foreach ($post['tags'] as $tag) : ?>
 			<li><?php echo("$tag "); ?></li>

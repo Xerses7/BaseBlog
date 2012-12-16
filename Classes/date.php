@@ -13,6 +13,15 @@
 			return ( $mysqldate );
 		}
 		
+		public static function get ($mysqldate){
+			$phpdate = self::mySQLtoPHP($mysqldate);
+			$viewdate = "inserito il ";
+			$viewdate .= date("d/m/Y ", $phpdate);
+			$viewdate .= ("alle ");
+			$viewdate .= date("H:i:s", $phpdate);
+			return ($viewdate);
+		}
+		
 	}
 
 ?>
