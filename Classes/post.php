@@ -12,7 +12,6 @@
 		//new Post
 		public function create ($values, $tags = null ){
 			print_r($values);
-			//first insert tags
 			
 			
 			$postId = $this->conn->insert(
@@ -33,7 +32,7 @@
 		}
 		
 		//update
-		public function update ($postId, $fields, $params, $values, $tagString = null ){
+		public function update ($postId, $fields, $params, $values, $newtags = null ){
 			$this->conn->update(
 				$postId,
 				"post",
@@ -44,12 +43,10 @@
 				"id_post"
 			);
 			
-			
-			
-			if(isset($tagString)){
+			if(isset($newtags)){
 				
 				$tagsContr = new Tags();
-				$tagsContr->addToPost($tagString, $postId);
+				$tagsContr->addToPost($newtags, $postId);
 			}
 		}
 		

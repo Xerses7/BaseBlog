@@ -2,7 +2,11 @@
 <h1 class="title"><?php echo $titolo; ?></h1>
 <div class="datetime"><?php echo($data_ora); ?></div>
 <p><?php echo $testo; ?></p>
+
+<?php if($canDisplay) : ?>
 <a class="admin" href="../Controllers/updatePost.php?id_post=<?php echo $id_post; ?>">Aggiorna</a>
+<?php endif; ?>
+
 <ul class="button">
 	<li><a href="../index.php">Indietro</a></li>
 </ul>

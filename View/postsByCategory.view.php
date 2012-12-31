@@ -10,10 +10,12 @@
 		<?php endforeach; ?>
 	</ul>
 	
+	<?php if($canDisplay) : ?>
 	<ul class="admin">
 		<li><a href="../Controllers/updatePost.php?id_post=<?php echo $post['id_post']; ?>">Aggiorna</a></li>
 		<li><a href="../Controllers/deletePost.php?id_post=<?php echo $post['id_post']; ?>">Cancella</a></li>
 	</ul>
+	<?php endif; ?>
 	<div class="text"><?php echo $post['testo']; ?></div>
 	
 <?php endforeach; ?>

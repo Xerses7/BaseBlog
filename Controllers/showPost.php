@@ -1,6 +1,8 @@
 <?php
 	require("../Classes/classes.php");
 	
+	session_start();
+	
 	$data = array();
 	if (isset($_GET['id_post'])){
 		$idPost = $_GET['id_post'];
@@ -23,7 +25,14 @@
 		$categories = $categoriesContr->get();
 		$post['categories'] = $categories;
 		
+		if (isset($_SESSION['admin'])){
+			$post['canDisplay'] = true;
+		} else {
+			$post['canDisplay'] = false;
+		}
+		
 		$data = $post;
+		
 	} else {
 		header("Location: http://localhost/Blog");
 	}

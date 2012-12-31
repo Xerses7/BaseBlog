@@ -10,12 +10,14 @@
 				$style = "./Stile/stile.css";
 				$categoryContr = "./Controllers/postsByCategory.php";
 				$home = "./index.php";
+				$login = "./View/login.view.php";
 				include("./View/layout.php");
 			} else {
 				$path = $path . ".view.php";
 				$style = "../Stile/stile.css";
 				$categoryContr = "../Controllers/postsByCategory.php";
 				$home = "../index.php";
+				$login = "../View/login.view.php";
 				include("../View/layout.php");
 			}
 		}

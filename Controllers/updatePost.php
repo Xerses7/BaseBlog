@@ -17,14 +17,14 @@
 			$id = $_POST['id_post'];
 			$idCategory = $_POST['categories'];
 			
-			// get tags from update form
-			$tagString = $_POST['tags'];
+			// get tags from update form, old and new
+			$newTags = $_POST['tags'];
 			
 			$post = new Post();
 			$fields = array('titolo', 'testo', 'categoria_id');
 			$params = array(':titolo', ':testo', ':categoria_id');
 			$values = array(':titolo' => $title,':testo' => $text, ':categoria_id' => $idCategory);
-			$post->update($id, $fields, $params, $values,$tagString);
+			$post->update($id, $fields, $params, $values,$newTags);
 			
 			header("Location: http://localhost/Blog");
 		}

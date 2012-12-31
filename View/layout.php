@@ -12,10 +12,11 @@
 <div class="wrapper">
 	<div class="header">
 	<h1><a href="<?php echo($home); ?>">Dario Pirola</a></h1>
+		<div class="login"><a href="<?php echo $login; ?>">Login</a> or register</div>
 		<div class="categories">
 			<ul>
-				<?php foreach($categories as $category) : ?>
-					<li><a href="<?php echo($categoryContr); ?>?id_categoria=<?php echo($category['id_categoria']); ?>"><?php echo($category['nome_categoria']); ?></a></li>
+				<?php foreach($categories as $key => $category) : ?>
+					<li><a href="<?php echo($categoryContr); ?>?id_categoria=<?php echo($key); ?>"><?php echo($category); ?></a></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>

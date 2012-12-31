@@ -16,7 +16,12 @@
 		
 		//read
 		public function get () {
-			$categories = $this->conn->select("categorie",""," ORDER BY nome_categoria");
+			$result = $this->conn->select("categorie",""," ORDER BY nome_categoria");
+			$categories = array();
+			foreach($result as $category){
+				$categories[$category['id_categoria']] = $category['nome_categoria'];
+			}
+			
 			return($categories);
 		}
 		

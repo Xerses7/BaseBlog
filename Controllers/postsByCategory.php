@@ -1,6 +1,8 @@
 <?php
 	require("../Classes/classes.php");
 	
+	session_start();
+	
 	$data = array();
 	
 	if (isset($_GET['id_categoria'])){
@@ -29,6 +31,13 @@
 		
 		$data['nome_categoria'] = $categoryName;
 		$data['categories'] = $categories;
+		
+		//check if user is admin
+		if (isset($_SESSION['admin'])){
+			$data['canDisplay'] = true;
+		} else {
+			$data['canDisplay'] = false;
+		}
 		
 	} else {
 		header("Location: http://localhost/Blog");
