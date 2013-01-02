@@ -1,4 +1,4 @@
-<h2 class="category">Categoria: <?php echo($nome_categoria); ?></h2>
+<h2 class="tag">Tag: <?php echo($tag_name); ?></h2>
 
 
 <?php foreach ($posts as $post) : ?>

@@ -23,7 +23,12 @@
 		//get all categories
 		$categoriesContr = new Categories();
 		$categories = $categoriesContr->get();
+		$post['category_name'] = $categoriesContr->getNameById($post['categoria_id']);
 		$post['categories'] = $categories;
+		
+		//get tags linked to post
+		$tagsContr = new Tags();
+		$post['tags'] = $tagsContr->get((int)$post['id_post']);
 		
 		if (isset($_SESSION['admin'])){
 			$post['canDisplay'] = true;

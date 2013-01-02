@@ -10,8 +10,8 @@
 	<div class="category">Categoria: <a href="<?php echo($categoryContr); ?>?id_categoria=<?php echo($post['categoria_id']); ?>"><?php echo($post['categoria']); ?></a></div>
 
 	<ul class="tags">
-		<?php foreach ($post['tags'] as $tag) : ?>
-			<li><?php echo("$tag "); ?></li>
+		<?php foreach ($post['tags'] as $key => $tag) : ?>
+			<li><a href="<?php echo($tagsContr); ?>?id_tag=<?php echo($key); ?>"><?php echo("$tag "); ?></a></li>
 		<?php endforeach; ?>
 	</ul>
 	

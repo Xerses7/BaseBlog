@@ -20,7 +20,7 @@
 			return($posts);
 		}
 		
-		// an interval of posts
+		// an interval of posts by category
 		public function getByCategory ($categoryId) {
 			//fetch posts from db
 			$posts = $this->db->select
@@ -31,6 +31,29 @@
 				"LIMIT 10",
 				$categoryId
 			);
+			return($posts);
+		}
+		
+		// an interval of posts by tag
+		public function getByTag($tagId){
+			//fetch posts from db
+			$postsIds = $this->db->select
+			(
+				"posts_tags",
+				"WHERE tag_id = :id",
+				"ORDER BY post_id DESC",
+				"",
+				$tagId,
+				"post_id"
+			);
+			
+			$postContr = new Post();
+			$posts = array();
+			
+			foreach ($postsIds as $id){
+				$posts[] = $postContr->get($id['post_id']);
+			}
+
 			return($posts);
 		}
 	}

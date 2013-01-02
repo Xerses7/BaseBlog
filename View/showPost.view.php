@@ -1,6 +1,15 @@
 <article>
 <h1 class="title"><?php echo $titolo; ?></h1>
 <div class="datetime"><?php echo($data_ora); ?></div>
+
+<div class="category">Categoria: <a href="<?php echo($categoryContr); ?>?id_categoria=<?php echo($categoria_id); ?>"><?php echo($category_name); ?></a></div>
+
+<ul class="tags">
+		<?php foreach ($tags as $key => $tag) : ?>
+			<li><a href="<?php echo($tagsContr); ?>?id_tag=<?php echo($key); ?>"><?php echo("$tag "); ?></a></li>
+		<?php endforeach; ?>
+	</ul>
+
 <p><?php echo $testo; ?></p>
 
 <?php if($canDisplay) : ?>

@@ -65,6 +65,7 @@
 		public function get ( $id ) {
 			
 			$data = $this->conn->select("post", " WHERE id_post = :id ",'', "LIMIT 1", $id);
+			
 			return($data);
 		}
 		

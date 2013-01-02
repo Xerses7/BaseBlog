@@ -79,7 +79,6 @@
 			$postTags = $this->getPostTags($idPost);
 			
 			return($postTags);
-			// TODO inserting the tag ID to link to a tag only page in the view
 		}
 		
 		public function getTagString($idPost){
@@ -99,6 +98,19 @@
 			}
 			
 			return($stringTags);
+		}
+		
+		public function getName($tagId){
+			//fetch posts from db
+			$tag = $this->conn->select
+			(
+				"tag",
+				"WHERE id_tag = :id",
+				"",
+				"LIMIT 1",
+				$tagId
+			);
+			return($tag['nome_tag']);
 		}
 		
 		//update
@@ -174,6 +186,8 @@
 			
 			return ($postTags);
 		}
+		
+		
 	}
 
 ?>

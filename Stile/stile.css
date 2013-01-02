@@ -61,7 +61,7 @@ select.categories {
 	font-size: 1.3em;
 }
 
-h2.category {
+h2.category, h2.tag {
 	color: #04266D;
 	margin-top: 0px;
 	margin-bottom: 30px;
