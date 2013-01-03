@@ -1,3 +1,4 @@
+
 <?php if ($canDisplay) : ?>
 <ul class="admin">
 	<li><a href="./Controllers/createPost.php">Nuovo post</a></li>
@@ -25,4 +26,8 @@
 	
 <?php endforeach; ?>
 
-
+<ul id="pageNumbers">
+<?php foreach ($pageNumbers as $number) : ?>	
+		<li><?php echo ($number); ?></li>	
+<?php endforeach; ?>
+</ul>

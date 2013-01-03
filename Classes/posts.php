@@ -15,7 +15,7 @@
 				"post",
 				"",
 				"ORDER BY id_post DESC",
-				"LIMIT 10"
+				""
 			);
 			return($posts);
 		}
@@ -28,7 +28,7 @@
 				"post",
 				"WHERE categoria_id = :id",
 				"ORDER BY id_post DESC",
-				"LIMIT 10",
+				"",
 				$categoryId
 			);
 			return($posts);

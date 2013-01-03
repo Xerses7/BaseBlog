@@ -1,3 +1,4 @@
+
 <h1>Nuovo Post</h1>
 
 <form action="./createPost.php" method="post">
@@ -10,7 +11,7 @@
 <label for="categories">Categoria: </label>
 <select class="categories" name="categories">
 	<?php foreach($categories as $category) : ?>
-		<option value="<?php echo($category['id_categoria']); ?>"><?php echo($category['nome_categoria']); ?></option>
+		<option value="<?php echo($category['id_categoria']); ?>"><?php echo($category); ?></option>
 	<?php endforeach; ?>
 </select>
 

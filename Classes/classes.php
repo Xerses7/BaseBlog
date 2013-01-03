@@ -8,7 +8,7 @@
 	require_once("tags.php");
 	require_once("date.php");
 	require_once("user.php");
-	
+	require_once("page.php");
 	
 	
 
