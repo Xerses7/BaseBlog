@@ -1,5 +1,5 @@
 <article>
-<h1 class="title"><?php echo $titolo; ?></h1>
+<h2 class="title"><?php echo $titolo; ?></h1>
 
 
 <div class="category">Categoria: <a href="<?php echo($categoryContr); ?>?id_categoria=<?php echo($categoria_id); ?>"><?php echo($category_name); ?></a></div>
@@ -10,12 +10,12 @@
 		<?php endforeach; ?>
 	</ul>
 
-<p><?php echo $testo; ?></p>
+<div class="text"><?php echo $testo; ?></div>
 
 <div class="datetime"><?php echo($data_ora); ?></div>
 
 <?php if($canDisplay) : ?>
-<a class="admin" href="../Controllers/updatePost.php?id_post=<?php echo $id_post; ?>">Aggiorna</a>
+<ul class="admin"><li><a href="../Controllers/updatePost.php?id_post=<?php echo $id_post; ?>">Aggiorna</a></li></ul>
 <?php endif; ?>
 
 <ul class="button">
