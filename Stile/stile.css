@@ -73,6 +73,8 @@ h2.category, h2.tag {
 	font-family: 'Montserrat', sans-serif;
 }
 
+
+
 div.header ul li {
 	text-decoration: none;
 	text-transform: uppercase;
@@ -82,6 +84,11 @@ div.header ul li {
 	text-shadow: 0 2px 0 #41046f;
 	margin-right: 40px;
 	font-family: 'Montserrat', sans-serif;
+}
+
+article {
+	margin-bottom: 20px;
+	position: relative;
 }
 
 div.content {
@@ -99,6 +106,29 @@ h2.title {
 h2.title a {
 	color: #222;
 	text-decoration:none;
+}
+
+ul.tags {
+	position: absolute;
+	left: -180px;
+	top: -10px;
+}
+
+ul.tags li {
+	display: block;
+	text-align: right;
+	font-size: 0.8em;
+	width: 120px;
+	margin-bottom: 6px;
+	
+}
+
+ul.tags li a {
+	text-decoration: none;
+	color: #1D0772;
+	background: #856FD7;
+	padding: 1px 5px;
+	border-radius: 3px;
 }
 
 div.text {
@@ -152,12 +182,32 @@ ul.admin li a, ul.button li a {
 	font-weight: bold;
 }
 
-div.text code {
+
+
+div.text pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	text-wrap: suppress;
+}
+
+div.text pre code {
 	display: block;
 	border: dashed 1px #0A034C;
-	padding: 10px;
+	padding: 5px;
 	background: #A9A2E3;
 	color: #2D1EAD;
+	tab-size: 3;
+}
+
+div.text pre code br {
+	display: none;
+}
+
+div.datetime {
+	color: #6749D7;
+	font-style: italic;
 }
 
 sidebar {
