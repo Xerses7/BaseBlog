@@ -6,8 +6,9 @@
 <?php endif; ?>
 
 <?php foreach ($posts as $post) : ?>
+	<article>
 	<h2 class="title"><a href="./Controllers/showPost.php?id_post=<?php echo $post['id_post']; ?>"><?php echo $post['titolo']; ?></a></h2>
-	<div class="datetime"><?php echo($post['data_ora']); ?></div>
+	
 	<div class="category">Categoria: <a href="<?php echo($categoryContr); ?>?id_categoria=<?php echo($post['categoria_id']); ?>"><?php echo($post['categoria']); ?></a></div>
 
 	<ul class="tags">
@@ -23,7 +24,8 @@
 	</ul>
 	<?php endif; ?>
 	<div class="text"><?php echo $post['testo']; ?></div>
-	
+	<div class="datetime"><?php echo($post['data_ora']); ?></div>
+	</article>
 <?php endforeach; ?>
 
 <ul id="pageNumbers">

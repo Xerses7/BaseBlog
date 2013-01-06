@@ -22,15 +22,10 @@
 			$posts[] = $post;
 		}
 		
-		$data['posts'] = $posts;
-		
 		//get all categories
 		$categoriesContr = new Categories();
 		$categories = $categoriesContr->get();
 		$categoryName = $categoriesContr->getNameById($id_categoria);
-		
-		$data['nome_categoria'] = $categoryName;
-		$data['categories'] = $categories;
 		
 		//check if user is admin
 		if (isset($_SESSION['admin'])){
@@ -39,9 +34,29 @@
 			$data['canDisplay'] = false;
 		}
 		
+		// pagination
+		// first we get the querystring: the page address MUST contain references to the category ID
+		$queryString = $_SERVER['QUERY_STRING'];
+		$page = new Page($posts, count($posts), 5);
+		if (isset($_GET['pn'])){
+			// select the page number chosen in the querystring
+			$page->select($_GET['pn']);
+		} else {
+			// or select the first
+			$page->select();
+		}
+		
+		//assign to data array
+		$data['posts'] = $page->toPresent();
+		$data['pageNumbers'] = $page->numbers("postsByCategory.php", $queryString);
+		$data['nome_categoria'] = $categoryName;
+		$data['categories'] = $categories;
+		
+		View::get("postsByCategory", $data);
+		
 	} else {
 		header("Location: http://localhost/Blog");
 	}
 	
-	View::get("postsByCategory", $data);
+	
 ?>

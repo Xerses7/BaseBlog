@@ -1,3 +1,4 @@
+
 <h1>Aggiorna Post</h1>
 
 <form action="./updatePost.php" method="post">
@@ -12,8 +13,8 @@
 
 <label for="categories">Categoria: </label>
 <select class="categories" name="categories">
-	<?php foreach($categories as $category) : ?>
-		<option value="<?php echo($category['id_categoria']); ?>"><?php echo($category['nome_categoria']); ?></option>
+	<?php foreach($categories as $key => $category) : ?>
+		<option value="<?php echo($key); ?>"><?php echo($category); ?></option>
 	<?php endforeach; ?>
 </select>
 

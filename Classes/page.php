@@ -37,11 +37,15 @@
 			return ($this->presentable);
 		}
 		
-		public function numbers ($controller) {
-			
+		public function numbers ($controller, $queryString = "") {
+			// if the queryString is set, we insert an '&' to link it to the pn definition
+			if(isset($queryString)){
+				$queryString .= "&"; 
+			}
 			$pageNumbers = array(); 
+			// create a link for each page needed, and store it in an array
 			for($i=1 ; $i <= $this->totalPages; $i++ ){
-				$pageNumbers[] = "<a href='$controller?pn=$i'>$i</a>";
+				$pageNumbers[] = "<a href='$controller?".$queryString."pn=$i'>$i</a>";
 			}
 			
 			return ($pageNumbers);

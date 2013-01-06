@@ -9,6 +9,8 @@
 		$id_tag = $_GET['id_tag'];
 		$postsContr = new Posts();
 		$tagsContr = new Tags();
+		$categoriesContr = new Categories();
+		
 		$oldPosts = $postsContr->getByTag($id_tag);
 		
 		$posts = array();
@@ -21,16 +23,9 @@
 			
 			$posts[] = $post;
 		}
-		
-		$data['posts'] = $posts;
-		
+
 		//get all categories
-		$categoriesContr = new Categories();
 		$categories = $categoriesContr->get();
-		$data['categories'] = $categories;
-		
-		//get the selected tag's name
-		$data['tag_name'] = $tagsContr->getName($id_tag);
 		
 		//check if user is admin
 		if (isset($_SESSION['admin'])){
@@ -38,6 +33,26 @@
 		} else {
 			$data['canDisplay'] = false;
 		}
+		
+		// pagination
+		// first we get the querystring: the page address MUST contain references to the tag ID, if present
+		$queryString = $_SERVER['QUERY_STRING'];
+		$page = new Page($posts, count($posts), 5);
+		if (isset($_GET['pn'])){
+			// select the page number chosen in the querystring
+			$page->select($_GET['pn']);
+		} else {
+			// or select the first
+			$page->select();
+		}
+		
+		//assign to data array
+		$data['posts'] = $page->toPresent();
+		$data['pageNumbers'] = $page->numbers("postsByTag.php", $queryString);
+		$data['categories'] = $categories;
+		
+		//get the selected tag's name
+		$data['tag_name'] = $tagsContr->getName($id_tag);
 	} else {
 		header("Location: http://localhost/Blog");
 	}
