@@ -32,6 +32,13 @@ div.header h1 a {
 	color: #222;
 }
 
+div.login {
+	position: relative;
+	top: -110px;
+	left: 900px;
+	display:inline;
+}
+
 div.categories {
 	margin: 0;
 	display:block;
@@ -45,13 +52,13 @@ div.categories ul {
 	padding-top: 10px;
 	padding-left:0;
 	padding-bottom: 10px;
-	border-bottom: solid 3px #BABABA;
+	border-bottom: solid 3px #A61300;
 	width: 70%;
 }
 
 div.categories ul li a {
 	text-decoration: none;
-	color: #BABABA;
+	color: #FF1E00;
 	text-shadow: 0 -1px 0 white;
 	
 }
