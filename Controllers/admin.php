@@ -11,9 +11,11 @@
 		if ($user->isAdmin()){
 		
 			$_SESSION['admin'] = true;
+		} else {
+			echo("Dati errati, accesso vietato!");
 		}
 	} else {
-	
+		echo("Per favore riempire entrambi i campi!");
 	} 
 
 ?>
