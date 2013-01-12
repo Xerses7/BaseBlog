@@ -12,8 +12,8 @@
 			$tagsContr = new Tags();
 			
 			// get data from server
-			$title = $_POST['titolo'];
-			$text = $_POST['testo'];
+			$title = htmlspecialchars($_POST['titolo']);
+			$text = htmlspecialchars($_POST['testo']);
 			$id = $_POST['id_post'];
 			$idCategory = $_POST['categories'];
 			

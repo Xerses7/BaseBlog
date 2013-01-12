@@ -9,8 +9,8 @@
 		
 		$data[':id_commento'] = " ";
 		$data[':post_id'] = $postId;
-		$data[':user'] = $_GET['user'];
-		$data[':testo'] = $_GET['textComment'];
+		$data[':user'] = htmlspecialchars($_GET['user']);
+		$data[':testo'] = htmlspecialchars($_GET['textComment']);
 		$data[':data_ora'] = Date::phpToMySQL( time() );
 		
 		$com->create($data);
