@@ -6,7 +6,7 @@
 		public function __construct(){
 			include("config.php");
 			try{
-				$conn = new PDO("mysql:host=localhost;dbname=$database", $username,$password );
+				$conn = new PDO("mysql:host=$host;dbname=$database", $username,$password );
 				$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 				$this->dbconn = $conn;
 			} catch(PDOException $e){
