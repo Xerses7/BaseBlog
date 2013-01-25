@@ -5,6 +5,7 @@
 		
 		public function __construct(){
 			$this->db = new Database();
+			
 		}
 		
 		// the first posts in reverse order of creation

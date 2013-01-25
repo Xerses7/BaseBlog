@@ -3,7 +3,6 @@
 	
 	$data = array();
 	
-	
 	// AFTER the Update...
 	if ($_SERVER['REQUEST_METHOD'] === "POST"){
 		echo("Tentativo di inserimento...");
@@ -27,7 +26,7 @@
 			$values = array(':titolo' => $title,':testo' => $text, ':categoria_id' => $idCategory);
 			$post->update($id, $fields, $params, $values,$newTags);
 			
-			header("Location: http://localhost/Blog");
+			header("Location: http://".$_SERVER['HTTP_HOST']);
 		}
 	// BEFORE the Update...
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {

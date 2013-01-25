@@ -20,9 +20,9 @@
 			$tags = $_POST['tags'];
 			// inserire il post nel DB
 			$dbPost = new Post();
-			$dbPost->create($data, $tags);
+			$idPost = $dbPost->create($data, $tags);
 			unset($data);
-			header("Location: http://localhost/Blog");
+			header("Location: http://".$_SERVER['HTTP_HOST']."/Controllers/showPost.php?id_post=".$idPost);
 		}
 	} else {
 		//get all categories

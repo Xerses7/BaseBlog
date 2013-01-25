@@ -18,7 +18,7 @@
 			$data[':data_ora'] = Date::phpToMySQL( time() );
 		
 			$com->create($data);
-			header("Location: http://localhost/Blog/Controllers/showPost.php?id_post=$postId");
+			header("Location: http://localhost/Controllers/showPost.php?id_post=$postId");
 		}
 	}
 

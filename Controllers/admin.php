@@ -11,6 +11,7 @@
 		if ($user->isAdmin()){
 		
 			$_SESSION['admin'] = true;
+			header("Location: http://".$_SERVER['HTTP_HOST']);
 		} else {
 			echo("Dati errati, accesso vietato!");
 		}

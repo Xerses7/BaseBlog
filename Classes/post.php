@@ -1,6 +1,7 @@
 <?php
 	
 	class Post {
+		
 		//db connection
 		protected $conn = '';
 		
@@ -22,13 +23,15 @@
 			);
 			
 			
-			echo("Post id: $postId ");
+			//echo("Post id: $postId ");
 			
 			if (isset($tags)){
 				$tagString = $tags;
 				$tagsContr = new Tags();
 				$tagsContr->addToPost($tagString, $postId);
-			}	
+			}
+			
+			return($postId);
 		}
 		
 		//update

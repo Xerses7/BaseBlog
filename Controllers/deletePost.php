@@ -6,7 +6,7 @@
 		$postsContr = new Post();
 		$deleted = $postsContr->delete($postId);
 		if($deleted){
-			header("Location: http://localhost/Blog");
+			header("Location: http://".$_SERVER['HTTP_HOST']);
 		}
 	}
 ?>

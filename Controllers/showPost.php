@@ -39,7 +39,7 @@
 		$data = $post;
 		
 	} else {
-		header("Location: http://localhost/Blog");
+		header("Location: http://".$_SERVER['HTTP_HOST']);
 	}
 	
 	View::get("showPost", $data);

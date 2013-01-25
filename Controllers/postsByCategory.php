@@ -55,7 +55,7 @@
 		View::get("postsByCategory", $data);
 		
 	} else {
-		header("Location: http://localhost/Blog");
+		header("Location: http://".$_SERVER['HTTP_HOST']);
 	}
 	
 	

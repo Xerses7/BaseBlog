@@ -54,7 +54,7 @@
 		//get the selected tag's name
 		$data['tag_name'] = $tagsContr->getName($id_tag);
 	} else {
-		header("Location: http://localhost/Blog");
+		header("Location: http://".$_SERVER['HTTP_HOST']);
 	}
 	
 	View::get("postsByTag", $data);

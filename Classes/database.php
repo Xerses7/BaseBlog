@@ -23,6 +23,9 @@
 				
 				// get the Id of the last inserted row...
 				$idInserted = $this->dbconn->lastInsertId();
+				
+				//TODO: delete method getLastId
+				
 				// and return it ! 
 				return($idInserted);
 				
