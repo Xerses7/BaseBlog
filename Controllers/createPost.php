@@ -10,8 +10,8 @@
 		} else {
 			// get data from server
 			$data[':id_post'] = " ";
-			$data[':titolo'] = htmlspecialchars($_POST['titolo']);
-			$data[':testo'] = htmlspecialchars($_POST['testo']);
+			$data[':titolo'] = $_POST['titolo'];
+			$data[':testo'] = $_POST['testo'];
 			 
 			$data[':data_ora'] = Date::phpToMySQL( time() );
 			$data[':categoria_id'] = "1";
