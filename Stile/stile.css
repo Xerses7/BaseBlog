@@ -1,12 +1,13 @@
-body {
+html, body {
 	font-family: verdana, sans-serif;
-	background: #DDD;
+	margin: 0px;
+	padding: 0px;
 }
 
 div.wrapper {
-	width: 95%;
-	margin: auto;
-	margin-top: 30px;
+	width: 100%;
+	padding-top: 0px;
+	margin-top: 0px;
 	background: white;
 }
 
@@ -19,7 +20,7 @@ div.header h1 {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	margin-left: 20%;
-	padding-top: 20px;
+	padding-top: 0px;
 	padding-left: 0px;
 	padding-bottom: 0px;
 	font-size: 3.5em;
@@ -39,29 +40,36 @@ div.login {
 	display:inline;
 }
 
-div.categories {
-	margin: 0;
-	display:block;
-	/**background: #585858;*/
-	
-}
+/*div.categories {*/
+/*	margin: 0;*/
+/*	padding: 0;*/
+/*	display:block;*/
+/*	/**background: #585858;*/*/
+/*	*/
+/*}*/
 
-div.categories ul {
-	font-weight: bold;
-	margin-left: 20%;
-	padding-top: 10px;
-	padding-left:0;
-	padding-bottom: 10px;
-	border-bottom: solid 3px #A61300;
-	width: 70%;
-}
+/*div.categories ul {*/
+/*    */
+/*	font-weight: bold;*/
+/*	margin-left: 0%;*/
+/*	padding-top: 10px;*/
+/*	margin-top: 0px;*/
+/*	padding-left:0;*/
+/*	padding-bottom: 10px;*/
+/*	width: 100%;*/
+/*	background: #1D0772;*/
+/*}*/
 
-div.categories ul li a {
-	text-decoration: none;
-	color: #FF1E00;
-	text-shadow: 0 -1px 0 white;
-	
-}
+/*div.categories ul li:nth-child(1) {*/
+/*	margin-left: 20%;*/
+/*}*/
+
+/*div.categories ul li a {*/
+/*	text-decoration: none;*/
+/*	color: white;*/
+/*/*	text-shadow: 0 -1px 0 white;*/ */
+/*	*/
+/*}*/
 
 select.categories {
 	display:block;
@@ -82,16 +90,16 @@ h2.category, h2.tag {
 
 
 
-div.header ul li {
-	text-decoration: none;
-	text-transform: uppercase;
-	display: inline;
-	color: white;
-	font-size: 1.5em;
-	text-shadow: 0 2px 0 #41046f;
-	margin-right: 40px;
-	font-family: 'Montserrat', sans-serif;
-}
+/*div.header ul li {*/
+/*	text-decoration: none;*/
+/*	text-transform: uppercase;*/
+/*	display: inline;*/
+/*	color: white;*/
+/*	font-size: 1.5em;*/
+/*	text-shadow: 0 2px 0 #41046f;*/
+/*	margin-right: 40px;*/
+/*	font-family: 'Montserrat', sans-serif;*/
+/*}*/
 
 article {
 	margin-bottom: 20px;
@@ -193,23 +201,18 @@ ul.admin li a, ul.button li a {
 
 div.text pre {
 	white-space: pre-wrap;
-	white-space: -moz-pre-wrap;
-	white-space: -o-pre-wrap;
-	word-wrap: break-word;
-	text-wrap: suppress;
+/*	white-space: -moz-pre-wrap;*/
+/*	white-space: -o-pre-wrap;*/
+/*	word-wrap: break-word;*/
+/*	text-wrap: suppress;*/
 }
 
 div.text pre code {
-	display: block;
-	border: dashed 1px #0A034C;
-	padding: 5px;
-	background: #A9A2E3;
-	color: #2D1EAD;
 	tab-size: 3;
 }
 
 div.text pre code br {
-	display: none;
+/*	display: none;*/
 }
 
 div.datetime {
