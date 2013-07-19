@@ -56,6 +56,7 @@
 		//delete
 		public function delete ($postId){
 			$ifDeleted = $this->conn->delete($postId, "post", "id_post");
+			$this->conn->delete($postId,"posts_tags","post_id");
 			return($ifDeleted);
 		}
 		
